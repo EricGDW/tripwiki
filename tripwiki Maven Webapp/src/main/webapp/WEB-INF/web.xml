@@ -10,10 +10,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
-  	<context-param>
-        <param-name>SystemGlobalsPropertiesn</param-name>
-        <param-value>SystemGlobals.properties</param-value>
-    </context-param>
     
     <filter>
 		<filter-name>Spring character encoding filter</filter-name>
@@ -35,8 +31,17 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
     </listener>
     
+    <servlet>  
+    	<servlet-name>spring-servlet</servlet-name>  
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>  
+    	<init-param>  
+        	<param-name>contextConfigLocation</param-name>  
+        	<param-value>applicationContext.xml</param-value>  
+    	</init-param>  
+	</servlet>   
+
   	<servlet>
-        <servlet-name>JerseySpring</servlet-name>
+        <servlet-name>jerseySpring-servlet</servlet-name>
         <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
@@ -49,7 +54,13 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>JerseySpring</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>jerseySpring-servlet</servlet-name>
+        <url-pattern>/jersey/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>  
+    	<servlet-name>spring-servlet</servlet-name>  
+    	<url-pattern>/mybatis/*</url-pattern>  
+	</servlet-mapping>  
+
 </web-app>

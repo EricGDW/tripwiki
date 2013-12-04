@@ -1,4 +1,4 @@
-package com.itucity.tripwiki;
+package com.itucity.tripwiki.jersey;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

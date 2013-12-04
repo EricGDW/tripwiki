@@ -11,29 +11,39 @@
     <!-- 开启通过注释进行事务配置 -->  
     <context:annotation-config />  
     <!-- 开启通过注释进行组件注入 -->  
-    <context:component-scan base-package="com.itucity.tripwiki" />  
+    <context:component-scan base-package="com.itucity.tripwiki.jersey" />  
     <!-- 加载属性文件 -->  
     <context:property-placeholder location="classpath:db.properties"/>  
     
      <!-- 配置数据源 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-         <property name="driverClassName" value="${db.driver"></property>
-        <property name="url" value="${db.url}"></property>
-        <property name="username" value="${db.username}"></property>
+     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+    	<property name="driverClassName" value="${db.driver}" />  
+    	<property name="url" value="${db.url}" />  
+    	<property name="username" value="${db.username}"></property>
         <property name="password" value="${db.password}"></property>
-    </bean>
+	</bean>  
     
-    <bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" /> 
     </bean>
     
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:MyBatis-Configuration.xml"></property>
+        <property name="configLocation" value="classpath:mybatis-configuration.xml"></property>
         <property name="dataSource" ref="dataSource" />
     </bean>
     
-    <bean id="demoService" class="com.itucity.tripwiki.RestDemoServiceImpl" />
+    <bean id="demoService" class="com.itucity.tripwiki.jersey.RestDemoServiceImpl" />
       
+    <!-- 这里的mapperInterface需要接口类型 -->  
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.itucity.tripwiki。mybatis.IUserDao" />  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>  
+      
+    <!-- 扫描包 -->  
+    <context:component-scan base-package="com.itucity.tripwiki" />   
+  
+    <!-- 使用注解方式的事务 -->  
+    <tx:annotation-driven transaction-manager="transactionManager" />  
 </beans> 

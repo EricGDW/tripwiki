@@ -1,4 +1,4 @@
-package com.itucity.tripwiki;
+package com.itucity.tripwiki.jersey;
 
 public class RestDemoServiceImpl implements RestDemoService{
 
