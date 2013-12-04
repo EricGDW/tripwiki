@@ -3,9 +3,10 @@
     <wb-module deploy-name="tripwiki Maven Webapp">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/build/classes"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/build/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
         <property name="java-output-path" value="/tripwiki Maven Webapp/build/test-classes"/>
         <property name="context-root" value="tripwiki"/>
     </wb-module>

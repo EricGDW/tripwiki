@@ -226,6 +226,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.0</version>
+		</dependency>
+
 		<!-- logback -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

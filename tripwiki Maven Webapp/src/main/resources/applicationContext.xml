@@ -12,6 +12,8 @@
     <context:annotation-config />  
     <!-- 开启通过注释进行组件注入 -->  
     <context:component-scan base-package="com.itucity.tripwiki.jersey" />  
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    
     <!-- 加载属性文件 -->  
     <context:property-placeholder location="classpath:db.properties"/>  
     
@@ -42,7 +44,7 @@
     </bean>  
       
     <!-- 扫描包 -->  
-    <context:component-scan base-package="com.itucity.tripwiki" />   
+    <context:component-scan base-package="com.itucity.tripwiki.mybatis" />   
   
     <!-- 使用注解方式的事务 -->  
     <tx:annotation-driven transaction-manager="transactionManager" />  
