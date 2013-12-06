@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.itucity.tripwiki.mybatis.mappers.UserDao">
+	<resultMap type="UserEntity" id="userResultMap">  
+        <id property="userID" column="id"/>  
+        <result property="userPWD" column="pwd"/>  
+        <result property="userName" column="name"/>  
+        <result property="userBirthday" column="birthday"/>
+        <result property="userSalary" column="salary"/>
+    </resultMap>
+     
+	<select id="getUser" parameterType="String" resultMap="userResultMap">  
+            <![CDATA[SELECT * FROM tw_user WHERE ID =  #{userID}]]>
+    </select>
+    
+    <select id="getAllUser" resultMap="userResultMap">  
+            <![CDATA[SELECT * FROM tw_user]]>
+    </select>
+    
+    <update id="updateUser" parameterType="UserEntity">
+    	<![CDATA[UPDATE tw_user SET PWD = #{userPWD},
+    			 name = #{userName},
+    			 birthday = #{userBirthday},
+    			 salary = #{userSalary} 
+    			 where ID = #{userID}
+    	]]>
+    </update>
+    
+    <insert id="insertUser" parameterType="UserEntity">
+    	<![CDATA[INSERT INTO tw_user(ID,PWD,NAME,BIRTHDAY,SALARY) VALUES(
+             	#{userID},
+             	#{userPWD},
+             	#{userName},
+             	#{userBirthday},
+             	#{userSalary}
+             )
+        ]]>
+    </insert>
+
+	<delete id="deleteUser" parameterType="String">
+		<![CDATA[DELETE FROM tw_user WHERE ID =  #{userID}]]>
+	</delete>
+</mapper>
