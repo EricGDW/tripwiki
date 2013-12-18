@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 这里的namespace名字必须为执行该sql的dao地址 -->
+<mapper namespace="com.itucity.tripwiki.identity.mapper.AdminDao">
+	<resultMap type="Admin" id="adminResultMap">  
+        <id property="id" column="id"/>  
+        <result property="name" column="name"/>  
+        <result property="password" column="password"/>  
+        <result property="email" column="email"/>
+        <result property="lastLoginTime" column="lastlogintime"/>
+        <result property="lastLoginIp" column="lastloginip"/>
+        <result property="roleId" column="roleid"/>
+    </resultMap>
+     
+	<select id="getAdmin" parameterType="String" resultMap="adminResultMap">  
+            <![CDATA[SELECT * FROM tw_admin WHERE ID =  #{id}]]>
+    </select>
+    
+    <select id="getAllAdmin" resultMap="adminResultMap">  
+            <![CDATA[SELECT * FROM tw_admin]]>
+    </select>
+    
+    <update id="updateAdmin" parameterType="Admin">
+    	<![CDATA[UPDATE tw_admin SET id = #{id},
+    			 name = #{userName},
+    			 birthday = #{userBirthday},
+    			 salary = #{userSalary} 
+    			 where ID = #{userID}
+    	]]>
+    </update>
+    
+    <insert id="insertAdmin" parameterType="Admin">
+    	<![CDATA[INSERT INTO tw_admin(ID,NAME,PASSWORD,EMAIL,LASTLOGINTIME,LASTLOGINIP,ROLEID) VALUES(
+             	#{id},
+             	#{name},
+             	#{password},
+             	#{email},
+             	#{lastLoginTime},
+             	#{lastLoginIp},，
+             	#{roleId}
+             )
+        ]]>
+    </insert>
+
+	<delete id="deleteAdmin" parameterType="String">
+		<![CDATA[DELETE FROM tw_admin WHERE ID =  #{id}]]>
+	</delete>
+</mapper>
