@@ -1,4 +1,4 @@
-package com.itucity.tripwiki.identity.mapper;
+package com.itucity.tripwiki.identity.dao;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.itucity.tripwiki.base.exceptions;
+package com.itucity.tripwiki.common.exceptions;
 
 public class TripwikiException extends RuntimeException {
 	

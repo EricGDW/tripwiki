@@ -40,14 +40,14 @@ public class AdminResource {
 	@GET
 	@Path("{adminId}")
 	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Admin getAdmin(@PathParam("adminId") String adminId){
+	public Admin getAdmin(@PathParam("adminId") Integer adminId){
 		return adminService.getAdmin(adminId);
 	}
 	
 	@PUT
 	@Path("{adminId}")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public void  updateAdmin(Admin admin, @PathParam("adminId") String adminId){
+	public void  updateAdmin(Admin admin, @PathParam("adminId") Integer adminId){
 		Admin a = adminService.getAdmin(adminId);
 		if(admin == null || a == null){
 			throw new WebApplicationException(404);
@@ -64,7 +64,7 @@ public class AdminResource {
 	}
 	
 	@DELETE @Path("{adminId}")
-	public void deleteAdmin(@PathParam("adminId") String adminId){
+	public void deleteAdmin(@PathParam("adminId") Integer adminId){
 		Admin a = adminService.getAdmin(adminId);
 		if(a == null ){
 			throw new WebApplicationException(404);

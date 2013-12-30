@@ -1,19 +1,20 @@
 package com.itucity.tripwiki.identity.model;
 
-import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.itucity.tripwiki.base.BaseModel;
+
 
 @XmlRootElement(name = "admin")
-public class Admin implements Serializable {
-	
+public class Admin extends BaseModel {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7640383186823556822L;
+	private static final long serialVersionUID = -734080570265979608L;
 
-	private String id;
+	private Integer id;
 	
 	private String name;
 	
@@ -30,14 +31,14 @@ public class Admin implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -133,5 +134,11 @@ public class Admin implements Serializable {
 		return "Admin [id=" + id + ", name=" + name + ", password="
 				+ password + ", lastLoginTime=" + lastLoginTime + ", lastLoginIp=" + lastLoginIp
 				+ ", email=" + email + ", roleId=" + roleId + "]";
+	}
+
+	@Override
+	public String getMetaData() {
+		// TODO Auto-generated method stub
+		return toString();
 	}
 }

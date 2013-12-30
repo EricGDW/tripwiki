@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.itucity.tripwiki.identity.mapper.MenuDao;
+import com.itucity.tripwiki.identity.dao.MenuDao;
 import com.itucity.tripwiki.identity.model.Menu;
 
 

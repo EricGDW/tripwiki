@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.itucity.tripwiki.identity.mapper.AdminDao;
+import com.itucity.tripwiki.identity.dao.AdminDao;
 import com.itucity.tripwiki.identity.model.Admin;
 
 
@@ -26,30 +26,30 @@ public class AdminService {
         this.adminDao = adminDao;  
     }  
   
-    public Admin getAdmin(String adminId) {  
-        return adminDao.getAdmin(adminId);  
+    public Admin getAdmin(Integer adminId) {  
+        return adminDao.query(adminId);  
     }  
   
     public List<Admin> getAllAdmin() {  
-        return adminDao.getAllAdmin();  
+        return adminDao.queryAll();  
     }  
   
     //表明该方法需要事务  
     @Transactional  
     public int insertAdmin(Admin admin) {  
-        return adminDao.insertAdmin(admin);  
+        return adminDao.save(admin);  
     }  
   
     @Transactional  
     public int updateAdmin(Admin admin) {  
         // TODO Auto-generated method stub  
-    	return adminDao.updateAdmin(admin);
+    	return adminDao.update(admin);
 
     }  
   
     @Transactional  
-    public int deleteAdmin(String adminId) {  
+    public int deleteAdmin(Integer adminId) {  
         // TODO Auto-generated method stub  
-        return adminDao.deleteAdmin(adminId);  
+        return adminDao.delete(adminId);  
     }  
 }

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "privilege")
-public class Privilege implements Serializable {
+@XmlRootElement(name = "resource")
+public class Resource implements Serializable {
 
 	/**
 	 * 
