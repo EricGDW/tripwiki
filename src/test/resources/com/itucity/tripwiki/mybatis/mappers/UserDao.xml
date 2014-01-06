@@ -3,19 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 这里的namespace名字必须为执行该sql的dao地址 -->
 <mapper namespace="com.itucity.tripwiki.mybatis.mappers.UserDao">
-	<resultMap type="UserEntity" id="userResultMap">  
-        <id property="userID" column="id"/>  
-        <result property="userPWD" column="pwd"/>  
-        <result property="userName" column="name"/>  
-        <result property="userBirthday" column="birthday"/>
-        <result property="userSalary" column="salary"/>
-    </resultMap>
-     
+	<resultMap type="UserEntity" id="userResultMap">
+		<id property="userID" column="id" />
+		<result property="userPWD" column="pwd" />
+		<result property="userName" column="name" />
+		<result property="userBirthday" column="birthday" />
+		<result property="userSalary" column="salary" />
+	</resultMap>
+
 	<select id="getUser" parameterType="String" resultMap="userResultMap">  
             <![CDATA[SELECT * FROM tw_user WHERE ID =  #{userID}]]>
-    </select>
-    
-    <insert id="insertUser" parameterType="UserEntity">
+	</select>
+
+	<insert id="insertUser" parameterType="UserEntity">
     	<![CDATA[INSERT INTO tw_user(ID,PWD,NAME,BIRTHDAY,SALARY) VALUES(
              	#{userID},
              	#{userPWD},
@@ -24,6 +24,6 @@
              	#{userSalary}
              )
         ]]>
-    </insert>
+	</insert>
 
 </mapper>
